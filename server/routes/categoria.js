@@ -2,6 +2,7 @@ const express = require('express');
 const _ = require('underscore');
 const app = express();
 const Categoria = require('../models/categoria');
+const producto = require('../models/producto');
 
 app.get('/categoria', (req, res) => {
     let desde = req.query.desde || 0;
@@ -32,7 +33,7 @@ app.get('/categoria', (req, res) => {
 app.post('/categoria', (req, res) => {
     let cat = new Categoria({
         descripcion: req.body.descripcion,
-        usuario: req.body.usuario
+        usuario: req.body.usuario,
     });
 
     cat.save((err, catDB) => {
